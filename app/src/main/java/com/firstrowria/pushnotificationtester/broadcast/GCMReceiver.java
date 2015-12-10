@@ -56,7 +56,12 @@ public class GCMReceiver extends BroadcastReceiver {
                 GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(context);
 
                 try {
-                    return gcm.register(context.getString(R.string.gcm_sender_id));
+                    String gcmSenderId = context.getString(R.string.gcm_sender_id);
+
+                    if (gcmSenderId == null || gcmSenderId.equals(""))
+                        throw new Exception("Set gcm_sender_id in gcm.xml");
+                    else
+                        return gcm.register(gcmSenderId);
                 } catch (Exception e) {
                     e.printStackTrace();
 
