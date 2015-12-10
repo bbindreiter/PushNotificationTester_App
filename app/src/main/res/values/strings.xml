@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">PushNotificationTester</string>
+    <string name="action_about">About</string>
+
+    <string name="ok">OK</string>
+
+    <string name="delay">Delay</string>
+    <string name="delay_init">Delay: 0 seconds</string>
+
+    <string name="seconds">seconds</string>
+    <string name="welcome_title">This App allows you to test whether or not Push Notifications are working on your phone and network. It will perform a series of checks and will give you feedback if one of the steps fails.</string>
+    <string name="welcome_click">To start the test please click the button on the bottom.</string>
+
+    <string name="step1">Step 1</string>
+    <string name="step2">Step 2</string>
+    <string name="step3">Step 3</string>
+    <string name="request_notification">Request Notification</string>
+    <string name="next">Next</string>
+
+    <string name="success">Success</string>
+    <string name="success_title">Your phone can receive push notifications without any problems.</string>
+
+    <string name="welcome">Welcome</string>
+    <string name="start">Start</string>
+
+    <string name="step1_title">Step 1 will check whether all prerequisites for receiving push notifications are met.</string>
+    <string name="step2_title">You can now request a push notification to be sent to your device. If you want to test the behaviour after your device goes to sleep use the slider below to delay the sending of the notification on the server.</string>
+    <string name="step3_title">Step 3 will request a push notification from the server and will check whether your device can receive it properly.</string>
+
+    <string name="play_services_installed">Play Services installed</string>
+    <string name="internet_connectivity">Internet Connectivity</string>
+    <string name="register_for_push">Register for Push Notifications</string>
+    <string name="connection_to_server">Connection to Server</string>
+    <string name="congratulations">Congratulations!</string>
+
+    <string name="notification_arrived">Notification arrived</string>
+    <string name="notification_show">Show Notification</string>
+    <string name="service_cleanup">Wakelock/Service cleanup</string>
+
+    <string name="unregister_from_push">Unregister from Push Notification</string>
+
+    <string name="about">(c) 2015 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: </string>
+
+</resources>
