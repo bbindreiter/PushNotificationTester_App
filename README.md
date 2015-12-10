@@ -1,4 +1,6 @@
-# Push Notification Tester
+# Push Notification Tester App
+
+Source of the Demo App found on Google Play to check whether Push Notifications can be received (https://developers.google.com/cloud-messaging/)
 
 ## How to get this thing running
 
