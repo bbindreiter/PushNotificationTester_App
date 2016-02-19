@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +25,8 @@ import com.firstrowria.pushnotificationtester.R;
 import com.firstrowria.pushnotificationtester.broadcast.GCMReceiver;
 import com.firstrowria.pushnotificationtester.threads.ConnectThread;
 import com.firstrowria.pushnotificationtester.threads.TriggerNotificationThread;
-import com.firstrowria.pushnotificationtester.util.PlayServicesUtil;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String BROADCAST_SUCCESS = "BROADCAST_SUCCESS";
     public static final String BROADCAST_PUSH_ID = "BROADCAST_PUSH_ID";
+
     private static final int RESULT_FLAG_PLAY_SERVICES = 0;
     private static final int RESULT_FLAG_INTERNET_CONNECTION = 1;
     private static final int RESULT_FLAG_PUSH_REGISTERED = 2;
@@ -52,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int RESULT_STEP1_SUCCESSFUL = 15; //1111
     private static final int RESULT_STEP2_SUCCESSFUL = 31; //11111
     private static final int RESULT_STEP3_SUCCESSFUL = 1023; //1111111111
+
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 0;
+
     private int step = 0;
     private String pushId = "";
 
@@ -69,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private Button continueButton = null;
     private TextView toolBarTextView = null;
     private Toolbar toolBar = null;
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -211,20 +219,32 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (step == 0) {
-
                     continueButton.setVisibility(View.INVISIBLE);
 
-                    if (PlayServicesUtil.checkPlayServices(getApplicationContext())) {
+                    //play services check
+                    int resultCode =  GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getApplicationContext());
+                    if (resultCode != ConnectionResult.SUCCESS) {
+                        step1Item1FrameLayout.findViewById(R.id.step1Item1ErrorImageView).setVisibility(View.VISIBLE);
+                        Log.e(MainActivity.TAG, "Cannot find proper Play Services: " + resultCode);
+
+                        if (GoogleApiAvailability.getInstance().isUserResolvableError(resultCode))
+                            GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST).show();
+                    }
+                    else {
                         step1Item1FrameLayout.findViewById(R.id.step1Item1SuccessImageView).setVisibility(View.VISIBLE);
                         step = step | (1 << RESULT_FLAG_PLAY_SERVICES);
-                    } else {
-                        step1Item1FrameLayout.findViewById(R.id.step1Item1ErrorImageView).setVisibility(View.VISIBLE);
                     }
 
-                    if (PlayServicesUtil.checkInternetConnection(getApplicationContext())) {
+                    //internet connectivity check
+                    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    if (connectivityManager != null && connectivityManager.getActiveNetworkInfo() != null) {
+                        Log.d(MainActivity.TAG, "Connected to Internet: " + connectivityManager.getActiveNetworkInfo().getTypeName());
+
                         step1Item2FrameLayout.findViewById(R.id.step1Item2SuccessImageView).setVisibility(View.VISIBLE);
                         step = step | (1 << RESULT_FLAG_INTERNET_CONNECTION);
                     } else {
+                        Log.e(MainActivity.TAG, "Not connected to Internet");
+
                         step1Item2FrameLayout.findViewById(R.id.step1Item2ErrorImageView).setVisibility(View.VISIBLE);
                     }
 
