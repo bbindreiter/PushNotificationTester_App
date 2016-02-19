@@ -222,15 +222,14 @@ public class MainActivity extends AppCompatActivity {
                     continueButton.setVisibility(View.INVISIBLE);
 
                     //play services check
-                    int resultCode =  GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getApplicationContext());
+                    int resultCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getApplicationContext());
                     if (resultCode != ConnectionResult.SUCCESS) {
                         step1Item1FrameLayout.findViewById(R.id.step1Item1ErrorImageView).setVisibility(View.VISIBLE);
                         Log.e(MainActivity.TAG, "Cannot find proper Play Services: " + resultCode);
 
                         if (GoogleApiAvailability.getInstance().isUserResolvableError(resultCode))
                             GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST).show();
-                    }
-                    else {
+                    } else {
                         step1Item1FrameLayout.findViewById(R.id.step1Item1SuccessImageView).setVisibility(View.VISIBLE);
                         step = step | (1 << RESULT_FLAG_PLAY_SERVICES);
                     }
