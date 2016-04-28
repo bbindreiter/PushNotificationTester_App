@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private Button continueButton = null;
     private TextView toolBarTextView = null;
     private Toolbar toolBar = null;
+    private AlertDialog aboutDialog = null;
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -292,6 +293,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
+        if (aboutDialog != null && aboutDialog.isShowing())
+            aboutDialog.dismiss();
+
         if (step == RESULT_STEP3_SUCCESSFUL)
             finish();
     }
@@ -314,16 +318,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_about) {
 
-            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-            alertDialog.setTitle(getString(R.string.action_about));
-            alertDialog.setMessage(getString(R.string.about));
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+            aboutDialog = new AlertDialog.Builder(MainActivity.this).create();
+            aboutDialog.setTitle(getString(R.string.action_about));
+            aboutDialog.setMessage(getString(R.string.about));
+            aboutDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
                     });
-            alertDialog.show();
+            aboutDialog.show();
 
             return true;
         }
