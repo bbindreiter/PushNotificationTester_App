@@ -4,10 +4,8 @@
 
     <string name="ok">OK</string>
 
-    <string name="delay">Delay</string>
-    <string name="delay_init">Delay: 0 seconds</string>
+    <string name="delay">Delay in seconds</string>
 
-    <string name="seconds">seconds</string>
     <string name="welcome_title">This App allows you to test whether or not Push Notifications are working on your phone and network. It will perform a series of checks and will give you feedback if one of the steps fails.</string>
     <string name="welcome_click">To start the test please click the button on the bottom.</string>
 

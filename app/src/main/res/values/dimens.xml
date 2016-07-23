@@ -6,6 +6,7 @@
 
     <dimen name="text_margin_top">20dp</dimen>
     <dimen name="item_margin_top">10dp</dimen>
+    <dimen name="item_margin_right">20dp</dimen>
     <dimen name="content_margin">8dp</dimen>
 
     <dimen name="text_l">28sp</dimen>

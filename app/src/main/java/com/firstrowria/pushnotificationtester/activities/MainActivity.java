@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int RESULT_STEP3_SUCCESSFUL = 1023; //1111111111
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 0;
+    private static final int MAX_PUSH_NOTIFICATION_DELAY_IN_SEC = 60 * 60;
 
     private int step = 0;
     private String pushId = "";
@@ -196,22 +198,10 @@ public class MainActivity extends AppCompatActivity {
         step3Item4FrameLayout = (FrameLayout) findViewById(R.id.step3Item4FrameLayout);
         step3Item5FrameLayout = (FrameLayout) findViewById(R.id.step3Item5FrameLayout);
 
-        final TextView delayTextView = (TextView) findViewById(R.id.delayTextView);
-        final SeekBar delaySeekBar = (SeekBar) findViewById(R.id.delaySeekBar);
-        delaySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                delayTextView.setText(getString(R.string.delay) + ": " + progress + " " + getString(R.string.seconds));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
+        final NumberPicker delayNumberPicker = (NumberPicker) findViewById(R.id.delayNumberPicker);
+        delayNumberPicker.setMinValue(0);
+        delayNumberPicker.setMaxValue(MAX_PUSH_NOTIFICATION_DELAY_IN_SEC);
+        delayNumberPicker.setWrapSelectorWheel(false);
 
         continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
@@ -271,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
 
                     step3Item1FrameLayout.findViewById(R.id.step3Item1ProgressBar).setVisibility(View.VISIBLE);
 
-                    (new TriggerNotificationThread(getApplicationContext(), pushId, delaySeekBar.getProgress())).start();
+                    (new TriggerNotificationThread(getApplicationContext(), pushId, delayNumberPicker.getValue())).start();
                 }
             }
         });

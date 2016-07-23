@@ -16,21 +16,31 @@
         android:text="@string/step2_title"
         android:textSize="@dimen/text_m" />
 
-
-    <SeekBar
-        android:id="@+id/delaySeekBar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top"
-        android:max="300" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/delayTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/delay_init"
-        android:textSize="@dimen/text_xs" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/delay"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_m" />
+
+        <NumberPicker
+            android:id="@+id/delayNumberPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
