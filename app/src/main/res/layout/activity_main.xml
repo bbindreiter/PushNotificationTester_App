@@ -36,26 +36,33 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <ViewFlipper
-        android:id="@+id/viewFlipper"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inAnimation="@android:anim/fade_in"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".MainActivity"
-        tools:showIn="@layout/activity_main">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/content_welcome" />
+        <ViewFlipper
+            android:id="@+id/viewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/scroll_bottom_margin"
+            android:inAnimation="@android:anim/fade_in"
+            android:measureAllChildren="false"
+            tools:context=".MainActivity"
+            tools:showIn="@layout/activity_main">
 
-        <include layout="@layout/content_step1" />
+            <include layout="@layout/content_welcome"  />
 
-        <include layout="@layout/content_step2" />
+            <include layout="@layout/content_step1" />
 
-        <include layout="@layout/content_step3" />
+            <include layout="@layout/content_step2" />
 
-        <include layout="@layout/content_success" />
-    </ViewFlipper>
+            <include layout="@layout/content_step3" />
+
+            <include layout="@layout/content_success" />
+        </ViewFlipper>
+
+    </android.support.v4.widget.NestedScrollView>
 
 
     <Button

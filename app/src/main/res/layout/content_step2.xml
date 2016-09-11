@@ -10,36 +10,39 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/step2_title"
         android:textSize="@dimen/text_m" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/item_margin_top"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/delay"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_m" />
+            android:layout_weight="1"
+            android:text="@string/delay"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_s"
+            android:textStyle="bold" />
 
         <NumberPicker
             android:id="@+id/delayNumberPicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
             android:layout_gravity="center_vertical" />
 
 
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,24 +50,34 @@
         android:layout_marginTop="@dimen/item_margin_top"
         android:orientation="horizontal">
 
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/delivery_priority"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_m" />
+            android:layout_weight="1"
+            android:text="@string/delivery_priority"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_s"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/deliveryPrioritySpinner"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical" />
 
 
-
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_priority_hint"
+        android:textSize="@dimen/text_xs"
+        android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,22 +86,33 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/notification_priority"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_m" />
+            android:layout_weight="1"
+            android:text="@string/notification_priority"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_s"
+            android:textStyle="bold" />
+
 
         <Spinner
             android:id="@+id/notificationPrioritySpinner"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical" />
 
 
-
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_priority_hint"
+        android:textSize="@dimen/text_xs"
+        android:textStyle="italic" />
+
 
 </LinearLayout>

@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_margin">20dp</dimen>
+    <dimen name="scroll_bottom_margin">64dp</dimen>
 
     <dimen name="text_margin_top">20dp</dimen>
     <dimen name="item_margin_top">10dp</dimen>

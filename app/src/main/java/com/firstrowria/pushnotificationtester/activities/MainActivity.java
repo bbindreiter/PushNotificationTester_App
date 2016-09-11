@@ -201,11 +201,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Spinner deliveryPrioritySpinner = (Spinner) findViewById(R.id.deliveryPrioritySpinner);
-        deliveryPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+        deliveryPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,
                 new String[]{getString(R.string.normal), getString(R.string.high)}));
 
         final Spinner notificationPrioritySpinner = (Spinner) findViewById(R.id.notificationPrioritySpinner);
-        deliveryPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+        notificationPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,
                 new String[]{getString(R.string.min), getString(R.string.low), getString(R.string.standard), getString(R.string.high), getString(R.string.max)}));
 
         final NumberPicker delayNumberPicker = (NumberPicker) findViewById(R.id.delayNumberPicker);

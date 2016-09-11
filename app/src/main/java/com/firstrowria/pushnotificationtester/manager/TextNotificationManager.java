@@ -21,7 +21,7 @@ public class TextNotificationManager {
         this.context = context;
     }
 
-    private NotificationCompat.Builder getNotificationBuilder(String title, String serverTime, int prio) {
+    private NotificationCompat.Builder getNotificationBuilder(String title, String serverTime, String prio) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         String serverTimeFormatted = "";
 
@@ -37,14 +37,14 @@ public class TextNotificationManager {
         builder.setContentText("sent on " + serverTimeFormatted);
         builder.setSmallIcon(R.drawable.ic_message_white_36dp);
         builder.setColor(context.getResources().getColor(R.color.primary));
-        builder.setPriority(prio);
+        builder.setPriority(Integer.parseInt(prio));
         builder.setDefaults(Notification.DEFAULT_ALL);
         builder.setAutoCancel(true);
 
         return builder;
     }
 
-    public void showTestNotification(String title, String serverTime, int prio) {
+    public void showTestNotification(String title, String serverTime, String prio) {
         manager.notify(new Random().nextInt(), getNotificationBuilder(title, serverTime, prio).build());
     }
 

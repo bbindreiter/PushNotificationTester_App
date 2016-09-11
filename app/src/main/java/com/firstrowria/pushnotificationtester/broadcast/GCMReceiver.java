@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.firstrowria.pushnotificationtester.R;
@@ -16,7 +15,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 public class GCMReceiver extends BroadcastReceiver {
 
     public static final String GCM_EXTRA_SERVER_TIME = "serverTime";
-    public static final String GCM_EXTRA_PRIORITIZATION = "prioritization";
+    public static final String GCM_EXTRA_PRIORITIZATION = "notificationPrio";
     public static final String GCM_EXTRA_TITLE = "title";
 
 
@@ -112,7 +111,7 @@ public class GCMReceiver extends BroadcastReceiver {
         Intent notificationIntent = new Intent(context, NotificationService.class);
         notificationIntent.putExtra(GCM_EXTRA_TITLE, intent.getStringExtra(GCM_EXTRA_TITLE));
         notificationIntent.putExtra(GCM_EXTRA_SERVER_TIME, intent.getStringExtra(GCM_EXTRA_SERVER_TIME));
-        notificationIntent.putExtra(GCM_EXTRA_PRIORITIZATION, intent.getIntExtra(GCM_EXTRA_PRIORITIZATION, NotificationCompat.PRIORITY_DEFAULT));
+        notificationIntent.putExtra(GCM_EXTRA_PRIORITIZATION, intent.getStringExtra(GCM_EXTRA_PRIORITIZATION));
         context.startService(notificationIntent);
     }
 

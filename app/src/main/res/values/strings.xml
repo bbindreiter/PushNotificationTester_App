@@ -6,7 +6,10 @@
 
     <string name="delay">Delay in seconds</string>
     <string name="delivery_priority">Delivery priority</string>
+    <string name="delivery_priority_hint">By default, messages are sent with normal priority. This optimizes the client app\'s battery consumption (Doze). There may be a short delay in receiving the notification. With high priority the notification can wake a sleeping device and is received immediately.</string>
+
     <string name="notification_priority">Notification priority</string>
+    <string name="notification_priority_hint">Indication of how much of the user\'s valuable attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. The system sets a notification\'s priority based on various factors including the setPriority value. The effect may differ slightly on different platforms.</string>
 
     <string name="max">Maximum</string>
     <string name="min">Minimum</string>
@@ -32,7 +35,7 @@
     <string name="start">Start</string>
 
     <string name="step1_title">Step 1 will check whether all prerequisites for receiving push notifications are met.</string>
-    <string name="step2_title">You can now request a push notification to be sent to your device. If you want to test the behaviour after your device goes to sleep use the slider below to delay the sending of the notification on the server.</string>
+    <string name="step2_title">You can now request a push notification to be sent to your device. If you want to test the behaviour after your device goes to sleep you can delay the sending of the notification on the server.</string>
     <string name="step3_title">Step 3 will request a push notification from the server and will check whether your device can receive it properly.</string>
 
     <string name="play_services_installed">Play Services installed</string>

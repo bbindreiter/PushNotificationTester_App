@@ -56,7 +56,7 @@ public class NotificationService extends Service {
 
         notificationManager.showTestNotification(bundle.getString(GCMReceiver.GCM_EXTRA_TITLE),
                 bundle.getString(GCMReceiver.GCM_EXTRA_SERVER_TIME),
-                bundle.getInt(GCMReceiver.GCM_EXTRA_PRIORITIZATION));
+                bundle.getString(GCMReceiver.GCM_EXTRA_PRIORITIZATION));
 
         Intent successIntent = new Intent(MainActivity.BROADCAST_ACTION_NOTIFICATION_SHOWN);
         successIntent.putExtra(MainActivity.BROADCAST_SUCCESS, true);
