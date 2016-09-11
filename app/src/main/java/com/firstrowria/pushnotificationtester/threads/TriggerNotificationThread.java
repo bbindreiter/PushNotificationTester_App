@@ -19,19 +19,28 @@ public class TriggerNotificationThread extends Thread {
 
     private Context context = null;
     private int delay = 0;
+    private int deliveryPrio = 0;
+    private int notificationPrio = 0;
     private String pushId = "";
 
-    public TriggerNotificationThread(Context context, String pushId, int delay) {
+    public TriggerNotificationThread(Context context, String pushId, int delay, int deliveryPrio, int notificationPrio) {
         this.context = context;
         this.pushId = pushId;
         this.delay = delay;
+        this.deliveryPrio = deliveryPrio;
+        this.notificationPrio = notificationPrio;
+
     }
 
     public void run() {
         Intent intent = new Intent(MainActivity.BROADCAST_ACTION_NOTIFICATION_REQUESTED);
 
         try {
-            HttpsURLConnection connection = (HttpsURLConnection) new URL("https://pushnotificationtester.appspot.com/notification?delay=" + delay + "&pushId=" + URLEncoder.encode(pushId, "UTF-8")).openConnection();
+            HttpsURLConnection connection = (HttpsURLConnection) new URL("https://pushnotificationtester.appspot.com/notification?delay=" + delay +
+                    "&deliveryPrio=" + deliveryPrio +
+                    "&notificationPrio=" + notificationPrio +
+                    "&pushId=" + URLEncoder.encode(pushId, "UTF-8"))
+                    .openConnection();
             connection.setRequestProperty("User-Agent", Build.MANUFACTURER + "/" + Build.MODEL + "/" + Build.VERSION.RELEASE + "/" + Build.VERSION.SDK_INT + "/2.0");
 
             InputStreamReader in = new InputStreamReader(connection.getInputStream(), "UTF-8");

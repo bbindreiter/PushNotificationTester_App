@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.C2DMNotificationService" />
+        <service android:name=".services.NotificationService" />
 
         <receiver
             android:name=".broadcast.GCMReceiver"

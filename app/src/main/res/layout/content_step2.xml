@@ -41,6 +41,54 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_top"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/delivery_priority"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_m" />
+
+        <Spinner
+            android:id="@+id/deliveryPrioritySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_top"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/notification_priority"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_m" />
+
+        <Spinner
+            android:id="@+id/notificationPrioritySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

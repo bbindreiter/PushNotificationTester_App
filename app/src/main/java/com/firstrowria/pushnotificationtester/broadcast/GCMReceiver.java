@@ -5,14 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.firstrowria.pushnotificationtester.R;
 import com.firstrowria.pushnotificationtester.activities.MainActivity;
-import com.firstrowria.pushnotificationtester.services.C2DMNotificationService;
+import com.firstrowria.pushnotificationtester.services.NotificationService;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GCMReceiver extends BroadcastReceiver {
+
+    public static final String GCM_EXTRA_SERVER_TIME = "serverTime";
+    public static final String GCM_EXTRA_PRIORITIZATION = "prioritization";
+    public static final String GCM_EXTRA_TITLE = "title";
+
+
     public static void unregisterAsync(final Context context) {
         new AsyncTask<Void, Void, Boolean>() {
             @Override
@@ -102,10 +109,11 @@ public class GCMReceiver extends BroadcastReceiver {
         successIntent.putExtra(MainActivity.BROADCAST_SUCCESS, true);
         LocalBroadcastManager.getInstance(context).sendBroadcastSync(successIntent);
 
-        Intent c2dmNotificationIntent = new Intent(context, C2DMNotificationService.class);
-        c2dmNotificationIntent.putExtra("title", intent.getStringExtra("title"));
-        c2dmNotificationIntent.putExtra("serverTime", intent.getStringExtra("serverTime"));
-        context.startService(c2dmNotificationIntent);
+        Intent notificationIntent = new Intent(context, NotificationService.class);
+        notificationIntent.putExtra(GCM_EXTRA_TITLE, intent.getStringExtra(GCM_EXTRA_TITLE));
+        notificationIntent.putExtra(GCM_EXTRA_SERVER_TIME, intent.getStringExtra(GCM_EXTRA_SERVER_TIME));
+        notificationIntent.putExtra(GCM_EXTRA_PRIORITIZATION, intent.getIntExtra(GCM_EXTRA_PRIORITIZATION, NotificationCompat.PRIORITY_DEFAULT));
+        context.startService(notificationIntent);
     }
 
 

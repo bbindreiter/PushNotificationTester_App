@@ -15,10 +15,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
-import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -198,6 +199,15 @@ public class MainActivity extends AppCompatActivity {
         step3Item4FrameLayout = (FrameLayout) findViewById(R.id.step3Item4FrameLayout);
         step3Item5FrameLayout = (FrameLayout) findViewById(R.id.step3Item5FrameLayout);
 
+
+        final Spinner deliveryPrioritySpinner = (Spinner) findViewById(R.id.deliveryPrioritySpinner);
+        deliveryPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+                new String[]{getString(R.string.normal), getString(R.string.high)}));
+
+        final Spinner notificationPrioritySpinner = (Spinner) findViewById(R.id.notificationPrioritySpinner);
+        deliveryPrioritySpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+                new String[]{getString(R.string.min), getString(R.string.low), getString(R.string.standard), getString(R.string.high), getString(R.string.max)}));
+
         final NumberPicker delayNumberPicker = (NumberPicker) findViewById(R.id.delayNumberPicker);
         delayNumberPicker.setMinValue(0);
         delayNumberPicker.setMaxValue(MAX_PUSH_NOTIFICATION_DELAY_IN_SEC);
@@ -261,7 +271,12 @@ public class MainActivity extends AppCompatActivity {
 
                     step3Item1FrameLayout.findViewById(R.id.step3Item1ProgressBar).setVisibility(View.VISIBLE);
 
-                    (new TriggerNotificationThread(getApplicationContext(), pushId, delayNumberPicker.getValue())).start();
+                    (new TriggerNotificationThread(getApplicationContext(),
+                            pushId,
+                            delayNumberPicker.getValue(),
+                            deliveryPrioritySpinner.getSelectedItemPosition(),
+                            notificationPrioritySpinner.getSelectedItemPosition()
+                    )).start();
                 }
             }
         });

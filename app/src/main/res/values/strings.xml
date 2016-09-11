@@ -5,6 +5,16 @@
     <string name="ok">OK</string>
 
     <string name="delay">Delay in seconds</string>
+    <string name="delivery_priority">Delivery priority</string>
+    <string name="notification_priority">Notification priority</string>
+
+    <string name="max">Maximum</string>
+    <string name="min">Minimum</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+
+    <string name="normal">Normal</string>
+    <string name="standard">Default</string>
 
     <string name="welcome_title">This App allows you to test whether or not Push Notifications are working on your phone and network. It will perform a series of checks and will give you feedback if one of the steps fails.</string>
     <string name="welcome_click">To start the test please click the button on the bottom.</string>

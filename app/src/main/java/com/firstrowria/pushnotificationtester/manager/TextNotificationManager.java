@@ -21,7 +21,7 @@ public class TextNotificationManager {
         this.context = context;
     }
 
-    private NotificationCompat.Builder getNotificationBuilder(String title, String serverTime) {
+    private NotificationCompat.Builder getNotificationBuilder(String title, String serverTime, int prio) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         String serverTimeFormatted = "";
 
@@ -32,17 +32,20 @@ public class TextNotificationManager {
             serverTimeFormatted = serverTime + " (timestamp)";
         }
 
-        builder.setTicker(title).setContentTitle(title).setContentText("sent on " + serverTimeFormatted).setSmallIcon(R.drawable.ic_message_white_36dp).setColor(context.getResources().getColor(R.color.primary));
+        builder.setTicker(title);
+        builder.setContentTitle(title);
+        builder.setContentText("sent on " + serverTimeFormatted);
+        builder.setSmallIcon(R.drawable.ic_message_white_36dp);
+        builder.setColor(context.getResources().getColor(R.color.primary));
+        builder.setPriority(prio);
         builder.setDefaults(Notification.DEFAULT_ALL);
         builder.setAutoCancel(true);
 
         return builder;
     }
 
-    public void showTestNotification(String title, String serverTime) {
-        NotificationCompat.Builder builder = getNotificationBuilder(title, serverTime);
-
-        manager.notify(new Random().nextInt(), builder.build());
+    public void showTestNotification(String title, String serverTime, int prio) {
+        manager.notify(new Random().nextInt(), getNotificationBuilder(title, serverTime, prio).build());
     }
 
 }

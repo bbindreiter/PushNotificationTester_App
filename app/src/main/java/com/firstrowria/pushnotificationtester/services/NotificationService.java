@@ -12,9 +12,10 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.firstrowria.pushnotificationtester.activities.MainActivity;
+import com.firstrowria.pushnotificationtester.broadcast.GCMReceiver;
 import com.firstrowria.pushnotificationtester.manager.TextNotificationManager;
 
-public class C2DMNotificationService extends Service {
+public class NotificationService extends Service {
     private TextNotificationManager notificationManager;
     private WakeLock wakeLock;
 
@@ -38,7 +39,7 @@ public class C2DMNotificationService extends Service {
         }
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "com.firstrowria.pushnotificationtester.services.C2DMNotificationService");
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "com.firstrowria.pushnotificationtester.services.NotificationService");
         wakeLock.setReferenceCounted(false);
         wakeLock.acquire();
 
@@ -53,10 +54,9 @@ public class C2DMNotificationService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Bundle bundle = intent.getExtras();
 
-        String title = bundle.getString("title");
-        String serverTime = bundle.getString("serverTime");
-
-        notificationManager.showTestNotification(title, serverTime);
+        notificationManager.showTestNotification(bundle.getString(GCMReceiver.GCM_EXTRA_TITLE),
+                bundle.getString(GCMReceiver.GCM_EXTRA_SERVER_TIME),
+                bundle.getInt(GCMReceiver.GCM_EXTRA_PRIORITIZATION));
 
         Intent successIntent = new Intent(MainActivity.BROADCAST_ACTION_NOTIFICATION_SHOWN);
         successIntent.putExtra(MainActivity.BROADCAST_SUCCESS, true);
