@@ -51,6 +51,6 @@
 
     <string name="unregister_from_push">Unregister from Push Notification</string>
 
-    <string name="about">&#169; 2016 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: https://github.com/bbindreiter/PushNotificationTester_App</string>
+    <string name="about">&#169; 2017 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: https://github.com/bbindreiter/PushNotificationTester_App</string>
 
 </resources>
