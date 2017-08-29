@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">推送通知测试</string>
+    <string name="action_about">关于</string>
+
+    <string name="ok">好的</string>
+
+    <string name="delay">延迟秒数</string>
+    <string name="delivery_priority">发送优先级</string>
+    <string name="delivery_priority_hint">默认情况下，消息以普通优先级进行发送。这样可以优化客户端应用程序的电池消耗(Doze)。在接收通知时可能会有短暂的延迟。高优先级的通知可以唤醒睡眠中的设备并立即接收。</string>
+
+    <string name="notification_priority">通知优先级</string>
+    <string name="notification_priority_hint">表示用户对该通知的关注程度。低优先级的通知在某些情况下可能会被用户隐藏，而用户可能会被高优先级的通知所打断。系统根据包括setPriority值在内的各种因素来设置通知的优先级。不同平台上的效果稍有不同。</string>
+
+    <string name="max">最高</string>
+    <string name="min">最低</string>
+    <string name="low">低</string>
+    <string name="high">高</string>
+
+    <string name="normal">普通</string>
+    <string name="standard">默认</string>
+
+    <string name="welcome_title">本应用程序允许您测试推送通知是否在您的设备和网络上工作。它将会执行一系列的检查，如果其中一个步骤失败将会反馈给您。</string>
+    <string name="welcome_click">要开始测试，请点击底部的按钮。</string>
+
+    <string name="step1">步骤1</string>
+    <string name="step2">步骤2</string>
+    <string name="step3">步骤3</string>
+    <string name="request_notification">请求通知</string>
+    <string name="next">下一步</string>
+
+    <string name="success">成功</string>
+    <string name="success_title">您的手机可以接收推送通知，没有任何问题。</string>
+
+    <string name="welcome">欢迎</string>
+    <string name="start">开始</string>
+
+    <string name="step1_title">步骤1将会检查是否满足接收推送通知的所有前提条件。</string>
+    <string name="step2_title">您现在可以请求发送一个推送通知到您的设备。如果您想测试您的设备睡眠后的行为，您可以延迟在服务上的通知发送。</string>
+    <string name="step3_title">步骤3将会从服务器请求一个推送通知并检查您的设备是否能够正常接收。</string>
+
+    <string name="play_services_installed">Play服务已安装</string>
+
+    <string name="internet_connectivity">互联网连接</string>
+    <string name="register_for_push">注册推送通知</string>
+    <string name="connection_to_server">连接服务器</string>
+    <string name="congratulations">恭喜！</string>
+
+    <string name="notification_arrived">通知到达！</string>
+    <string name="notification_show">显示通知</string>
+    <string name="service_cleanup">唤醒锁/服务清理</string>
+
+    <string name="unregister_from_push">取消注册推送通知</string>
+
+    <string name="about">&#169; 2017 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: https://github.com/bbindreiter/PushNotificationTester_App</string>
+
+</resources>
