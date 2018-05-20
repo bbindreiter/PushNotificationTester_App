@@ -189,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@string/service_cleanup"
+            android:text="@string/unregister_from_push"
             android:textColor="@color/accent"
             android:textSize="@dimen/text_s"
             android:textStyle="bold" />
@@ -219,59 +219,6 @@
 
             <ProgressBar
                 android:id="@+id/step3Item4ProgressBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:indeterminate="true"
-                android:visibility="invisible" />
-
-        </FrameLayout>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/item_margin_top"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="@string/unregister_from_push"
-            android:textColor="@color/accent"
-            android:textSize="@dimen/text_s"
-            android:textStyle="bold" />
-
-        <FrameLayout
-            android:id="@+id/step3Item5FrameLayout"
-            android:layout_width="32dp"
-            android:layout_height="32dp">
-
-            <ImageView
-                android:id="@+id/step3Item5SuccessImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_check_white_36dp"
-                android:tint="@color/success"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/step3Item5ErrorImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_close_white_36dp"
-                android:tint="@color/error"
-                android:visibility="invisible" />
-
-            <ProgressBar
-                android:id="@+id/step3Item5ProgressBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"

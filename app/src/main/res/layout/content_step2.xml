@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:text="@string/delay"
             android:textColor="@color/accent"
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:text="@string/delivery_priority"
             android:textColor="@color/accent"
@@ -89,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:text="@string/notification_priority"
             android:textColor="@color/accent"
@@ -106,8 +106,18 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/notificationPriorityChannelHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_channel_hint"
+        android:textColor="@color/warning"
+        android:textSize="@dimen/text_xs"
+        android:textStyle="italic"
+        android:visibility="gone" />
 
     <TextView
+        android:id="@+id/notificationPriorityDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/notification_priority_hint"

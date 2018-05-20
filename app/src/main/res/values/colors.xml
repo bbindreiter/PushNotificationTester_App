@@ -7,5 +7,6 @@
     <color name="success">#37a43e</color>
     <color name="success_dark">#319337</color>
     <color name="error">#FF0000</color>
+    <color name="warning">#ffa500</color>
 </resources>
 

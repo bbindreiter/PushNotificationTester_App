@@ -10,14 +10,15 @@
 
     <string name="notification_priority">Notification priority</string>
     <string name="notification_priority_hint">Indication of how much of the user\'s valuable attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. The system sets a notification\'s priority based on various factors including the setPriority value. The effect may differ slightly on different platforms.</string>
+    <string name="notification_channel_hint">The notification channel has already been created. The priority can only be changed in the Application Info Notification Settings</string>
 
-    <string name="max">Maximum</string>
+
     <string name="min">Minimum</string>
     <string name="low">Low</string>
-    <string name="high">High</string>
-
-    <string name="normal">Normal</string>
     <string name="standard">Default</string>
+    <string name="high">High</string>
+    <string name="max">Maximum</string>
+    <string name="normal">Normal</string>
 
     <string name="welcome_title">This App allows you to test whether or not Push Notifications are working on your phone and network. It will perform a series of checks and will give you feedback if one of the steps fails.</string>
     <string name="welcome_click">To start the test please click the button on the bottom.</string>
@@ -47,10 +48,11 @@
 
     <string name="notification_arrived">Notification arrived</string>
     <string name="notification_show">Show Notification</string>
-    <string name="service_cleanup">Wakelock/Service cleanup</string>
 
     <string name="unregister_from_push">Unregister from Push Notification</string>
 
-    <string name="about">&#169; 2017 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: https://github.com/bbindreiter/PushNotificationTester_App</string>
+    <string name="about">&#169; 2018 by Bernd Bindreiter.\n\nIcons from Google\'s Material Icon set: https://www.google.com/design/icons/\n\nFind this App on GitHub: https://github.com/bbindreiter/PushNotificationTester_App</string>
 
+    <string name="channel_name">Test Notification Channel</string>
+    <string name="channel_description">Used for the test notification</string>
 </resources>
