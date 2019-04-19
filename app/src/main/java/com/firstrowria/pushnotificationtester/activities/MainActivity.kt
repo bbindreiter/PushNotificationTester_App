@@ -19,9 +19,9 @@ import android.widget.NumberPicker
 import android.widget.Spinner
 import com.firstrowria.pushnotificationtester.R
 import com.firstrowria.pushnotificationtester.manager.TextNotificationManager
+import com.firstrowria.pushnotificationtester.network.connect
+import com.firstrowria.pushnotificationtester.network.triggerNotification
 import com.firstrowria.pushnotificationtester.services.FCMMessagingService
-import com.firstrowria.pushnotificationtester.threads.ConnectThread
-import com.firstrowria.pushnotificationtester.threads.TriggerNotificationThread
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import kotlinx.android.synthetic.main.activity_main.*
@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
                 //internet connectivity check
                 val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 if (connectivityManager.activeNetworkInfo != null) {
-                    Log.d(TAG, "Connected to Internet: " + connectivityManager.activeNetworkInfo.typeName)
+                    Log.d(TAG, "Connected to Internet")
 
                     step1Item2SuccessImageView.isVisible = true
                     step = step or (1 shl RESULT_FLAG_INTERNET_CONNECTION)
@@ -181,7 +181,7 @@ class MainActivity : AppCompatActivity() {
                 step1Item4ProgressBar.isVisible = true
 
                 //try to register for GCM and check Server connection as well
-                ConnectThread(applicationContext).start()
+                connect(applicationContext)
                 FCMMessagingService.register(applicationContext)
             } else if (step == RESULT_STEP1_SUCCESSFUL) {
                 viewFlipper.showNext()
@@ -197,12 +197,12 @@ class MainActivity : AppCompatActivity() {
 
                 step3Item1ProgressBar.isVisible = true
 
-                TriggerNotificationThread(applicationContext,
+                triggerNotification(applicationContext,
                         pushId,
                         delayNumberPicker.value,
                         deliveryPrioritySpinner.selectedItemPosition,
                         notificationPrioritySpinner.selectedItemPosition
-                ).start()
+                )
             }
         }
 
