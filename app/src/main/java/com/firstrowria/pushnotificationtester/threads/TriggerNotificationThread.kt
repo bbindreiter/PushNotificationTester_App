@@ -15,18 +15,23 @@ import java.net.URLEncoder
 
 import javax.net.ssl.HttpsURLConnection
 
-class TriggerNotificationThread(private val context: Context, private val pushId: String, private val delay: Int, private val deliveryPrio: Int, private val notificationPrio: Int) : Thread() {
+class TriggerNotificationThread(private val context: Context,
+                                private val pushId: String,
+                                private val delay: Int,
+                                private val deliveryPrio: Int,
+                                private val notificationPrio: Int) : Thread() {
 
     override fun run() {
         val intent = Intent(MainActivity.BROADCAST_ACTION_NOTIFICATION_REQUESTED)
 
         try {
-            val connection = URL("https://pushnotificationtester-fcm.appspot.com/notification?delay=" + delay +
-                    "&deliveryPrio=" + deliveryPrio +
-                    "&notificationPrio=" + notificationPrio +
-                    "&pushId=" + URLEncoder.encode(pushId, "UTF-8"))
-                    .openConnection() as HttpsURLConnection
-            connection.setRequestProperty("User-Agent", Build.MANUFACTURER + "/" + Build.MODEL + "/" + Build.VERSION.RELEASE + "/" + Build.VERSION.SDK_INT + "/2.0")
+            val connection = URL("https://pushnotificationtester-fcm.appspot.com/notification" +
+                                         "?delay=$delay" +
+                                         "&deliveryPrio=$deliveryPrio" +
+                                         "&notificationPrio=$notificationPrio" +
+                                         "&pushId=${URLEncoder.encode(pushId, "UTF-8")}").openConnection() as HttpsURLConnection
+            connection.setRequestProperty("User-Agent",
+                                          Build.MANUFACTURER + "/" + Build.MODEL + "/" + Build.VERSION.RELEASE + "/" + Build.VERSION.SDK_INT + "/2.0")
 
             val inputStreamReader = InputStreamReader(connection.inputStream, "UTF-8")
 

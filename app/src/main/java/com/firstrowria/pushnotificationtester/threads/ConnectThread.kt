@@ -21,7 +21,8 @@ class ConnectThread(private val context: Context) : Thread() {
 
         try {
             val connection = URL("https://pushnotificationtester-fcm.appspot.com/connect").openConnection() as HttpsURLConnection
-            connection.setRequestProperty("User-Agent", Build.MANUFACTURER + "/" + Build.MODEL + "/" + Build.VERSION.RELEASE + "/" + Build.VERSION.SDK_INT + "/2.0")
+            connection.setRequestProperty("User-Agent",
+                                          Build.MANUFACTURER + "/" + Build.MODEL + "/" + Build.VERSION.RELEASE + "/" + Build.VERSION.SDK_INT + "/2.0")
 
             val inputStreamReader = InputStreamReader(connection.inputStream, "UTF-8")
 
