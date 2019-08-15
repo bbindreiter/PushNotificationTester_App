@@ -3,8 +3,8 @@ package com.firstrowria.pushnotificationtester.services
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.firstrowria.pushnotificationtester.activities.MainActivity
 import com.firstrowria.pushnotificationtester.manager.TextNotificationManager
 import com.google.firebase.iid.FirebaseInstanceId

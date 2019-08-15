@@ -5,11 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.LocalBroadcastManager
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +14,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.NumberPicker
 import android.widget.Spinner
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.firstrowria.pushnotificationtester.R
 import com.firstrowria.pushnotificationtester.manager.TextNotificationManager
 import com.firstrowria.pushnotificationtester.network.connect
@@ -130,13 +131,16 @@ class MainActivity : AppCompatActivity() {
         val notificationPrioritySpinner = findViewById<View>(R.id.notificationPrioritySpinner) as Spinner
         notificationPrioritySpinner.adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,
                 arrayOf(getString(R.string.min), getString(R.string.low), getString(R.string.standard), getString(R.string.high), getString(R.string.max)))
+        notificationPrioritySpinner.setSelection(2)
 
-        TextNotificationManager.getDefaultNotificationChannel(this)?.let {
-            notificationPrioritySpinner.isEnabled = false
-            //importance is 1-5, items in list are 0-4
-            notificationPrioritySpinner.setSelection(it.importance - 1)
-            findViewById<View>(R.id.notificationPriorityChannelHint).isVisible = true
-            findViewById<View>(R.id.notificationPriorityDescription).isVisible = false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            TextNotificationManager.getDefaultNotificationChannel(this)?.let {
+                notificationPrioritySpinner.isEnabled = false
+                //importance is 1-5, items in list are 0-4
+                notificationPrioritySpinner.setSelection(it.importance - 1)
+                findViewById<View>(R.id.notificationPriorityChannelHint).isVisible = true
+                findViewById<View>(R.id.notificationPriorityDescription).isVisible = false
+            }
         }
 
         val delayNumberPicker = findViewById<View>(R.id.delayNumberPicker) as NumberPicker
